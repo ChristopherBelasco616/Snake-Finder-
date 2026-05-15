@@ -1,0 +1,29 @@
+# Snake-Finder-
+Finds snake based on variables with some minor bugs/quirks
+//Lists of slithering snake stuff
+var colors = [(getColumn("SnakeStuff", "Color"))];
+var sLength = [(getColumn("SnakeStuff", "Length"))];
+var names = [(getColumn("SnakeStuff", "Name"))];
+var name;
+var selectedColor;
+var selectedLength;
+//The Call of my functions
+
+
+onEvent("button2", "click", function(){
+  selectedColor = getText("favColor");
+  selectedLength = getText("snakeLength");
+  name = snakeStuffToSnake(selectedLength, selectedColor );
+  setProperty("typeGiven", "text", name);
+  console.log(name + "thing");
+});
+
+//Function that snakes for the color dropdown to pair with the length and generate the outcome
+function snakeStuffToSnake(selectedLength, selectedColor) {
+  for (var i = 0; i < names.length; i++) {
+    if (sLength[i] == selectedLength && colors[i] == selectedColor) {
+      name = names[i];
+    }
+  }
+  return name;
+}
